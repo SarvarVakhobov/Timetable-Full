@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView)
 
-from .views import signup, LessonView, ProfessorView
+from .views import signup, LessonView, TeacherView
 
 
 urlpatterns = [
