@@ -8,9 +8,6 @@ class Position(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta:
-        app_label = 'api'
-
 class Teacher(models.Model):
     first_name = models.CharField(__('first name'), max_length=40)
     last_name = models.CharField(__('last name'), max_length=40, null=True)
@@ -18,9 +15,6 @@ class Teacher(models.Model):
 
     def __str__(self):
         return f"{self.position} {self.last_name}.{self.first_name[:1]}"
-
-    class Meta:
-        app_label = 'api'
     
 
 class Timetable(models.Model):
@@ -29,9 +23,6 @@ class Timetable(models.Model):
 
     def __str__(self):
         return f"{self.time_from} - {self.time_until}"
-
-    class Meta:
-        app_label = "api"
     
 class Branch(models.Model):
     name = models.CharField(__("name of the branch"), max_length=255)
@@ -39,9 +30,6 @@ class Branch(models.Model):
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        app_label = "api"
 
 class Group(models.Model):
     name = models.CharField(__('name of the group'), max_length=255)
@@ -51,36 +39,24 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta:
-        app_label = 'api'    
-
 class Room(models.Model):
     room_number = models.CharField(__('number of the room'), max_length=20)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.room_number
-    
-    class Meta:
-        app_label = 'api'
 
 class LessonName(models.Model):
     name = models.CharField(__("name of the lesson"), max_length=50)
 
     def __str__(self):
         return self.name
-    
-    class Meta:
-        app_label = 'api'
 
 class LessonType(models.Model):
     name = models.CharField(__('type of lessons'), max_length=40)
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        app_label = 'api'
 
 class Lesson(models.Model):
     name = models.ForeignKey(LessonName, on_delete=models.CASCADE, related_name='lessons')
@@ -106,5 +82,4 @@ class Lesson(models.Model):
         return f'{self.name}, {self.day}'
 
     class Meta:
-        app_label = 'api'
         ordering = ['day', 'timetable']

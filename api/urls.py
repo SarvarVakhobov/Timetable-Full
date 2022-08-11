@@ -6,11 +6,11 @@ from .views import signup, LessonView, TeacherView
 
 
 urlpatterns = [
-    path('v1/signup/', signup, name='signup'),
-    path('v1/token/',
+    path('signup/', signup, name='signup'),
+    path('token/',
          TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('v1/token/refresh/',
+    path('token/refresh/',
          TokenRefreshView.as_view(), name='token_refresh'),
-    path('v1/timetable/teacher/', TeacherView.as_view(), name='teacher'),
-    path('v1/timatable/', LessonView.as_view(), name='schedule'),
+    path('timetable/teacher/', TeacherView.as_view(), name='teacher'),
+    path('timatable/', LessonView.as_view(), name='schedule'),
 ]
